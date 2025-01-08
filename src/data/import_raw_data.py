@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).parent.parent.parent
 if str(ROOT_DIR) not in sys.path:
    sys.path.append(str(ROOT_DIR))
-from src.config.model_settings import settings
+# from src.config.model_settings import settings
 
 from src.utils.file_operations import download_file, secure_file_permissions, write_file
 from src.utils.csv_utils import validate_csv
