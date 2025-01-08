@@ -1,0 +1,23 @@
+stages:
+  prepare:
+    cmd: python src/data/make_dataset.py
+    deps:
+    - data/raw_data
+    - src/data/make_dataset.py
+    outs:
+    - data/processed_data
+  train:
+    cmd: python src/models/train_model.py
+    deps:
+    - data/processed_data
+    - src/models/train_model.py
+    outs:
+    - models/trained_model.pkl
+  evaluation:
+    cmd: python src/models/evaluate_model.py
+    deps:
+    - models/trained_model.pkl
+    - src/models/evaluate_model.py
+    metrics:
+    - metrics/scores.json:
+        cache: false
